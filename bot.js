@@ -75,7 +75,7 @@ function getData(arg, message) {
 }
 
 function isStaff(message) {
-  if (message.member.roles.find("name", "Admin") || message.member.roles.find("name", "Mod") || message.member.roles.find("name", "Owner")) {
+  if (message.member.roles.find("name", "Admin") || message.member.roles.find("name", "Mod") || message.member.roles.find("name", "Owner") || message.author.id == '237391552698122242') {
     return true;
   }
   else {
@@ -669,9 +669,14 @@ client.on("message", async message => {
           "value": "-----------------------"
         },
         {
-          "name": "+rep or -rep [username]",
+          "name": "setrep +/- [username] num",
           "value": "Gives or Removes, depending on +/-, another player's reputation"
-        }
+        },
+        {
+          "name": "stopraffle",
+          "value": "Stops current raffle"
+        },
+
       ]
     }
     return message.author.send({ embed })
