@@ -74,34 +74,8 @@ function getData(arg, message) {
   }
 }
 
-function setDataOLD(key, value) {
-  if(!fs.existsSync("reputationOLD.json")) {
-    fs.writeFileSync("reputationOLD.json", JSON.stringify({key: value}))
-  } else {
-    let obj = JSON.parse(fs.readFileSync("reputationOLD.json"))
-    obj[key] = value
-    fs.writeFileSync("reputationOLD.json", JSON.stringify(obj))
-  }
-}
-
-function getDataOLD(key, def) {
-  if(!fs.existsSync("reputationOLD.json")) {
-    fs.writeFileSync("reputationOLD.json", JSON.stringify({key: def}))
-    return def
-  } else {
-    let obj = JSON.parse(fs.readFileSync("reputationOLD.json"))
-    if(obj.hasOwnProperty(key)) {
-      return obj[key]
-    } else {
-      obj[key] = def
-      fs.writeFileSync("reputationOLD.json", JSON.stringify(obj))
-      return def
-    }
-  }
-}
-
 function isStaff(message) {
-  if (message.member.roles.find("name", "Admin") || message.member.roles.find("name", "Mod") || message.member.roles.find("name", "Owner") || message.author.id == '237391552698122242') {
+  if (message.member.roles.find("name", "Admin") || message.member.roles.find("name", "Mod") || message.member.roles.find("name", "Owner")) {
     return true;
   }
   else {
@@ -267,31 +241,6 @@ client.on("message", async message => {
       return message.reply("You don't have the correct role to use that command")
     }
   } // END OF SETREPUTATION COMMAND
-
-  if (command === "transfer") {
-    if (message.author.id == "237391552698122242") {
-      message.channel.send("Beginning Transfer Process, ***All bot commands will be disabled during this process!***")
-      transferring = true;
-      message.guild.members.forEach(function(guildMember, guildMemberId) {
-         console.log(guildMemberId, guildMember.user.username);
-         let obj = JSON.parse(fs.readFileSync("reputationOLD.json"))
-         if (obj[guildMemberId + ":rep"] >= 0) {
-           console.log("User Found ")
-           let rep = getDataOLD(guildMemberId +":rep", 0)
-           let nrep = getDataOLD(guildMemberId +":nrep", 0)
-           let shop = getDataOLD(guildMemberId +":shop", "")
-           console.log(rep + " " + nrep + " " + shop)
-           setData(guildMemberId, "PositiveRep", rep, message)
-           setData(guildMemberId, "NegativeRep", nrep, message)
-           setData(guildMemberId, "Shop", shop, message)
-         } else {
-           console.log("User not Found ")
-         }
-      })
-      transferring = false;
-      message.channel.send("Transferring Process Over ***Bot Commands Enabled***")
-    }
-  } // END OF TRANSFER COMMAND
 
   if (command === "shop") {
     let arg = ''
