@@ -75,7 +75,7 @@ function getData(arg, message) {
 }
 
 function isStaff(message) {
-  if (message.member.roles.find("name", "Admin") || message.member.roles.find("name", "Mod") || message.member.roles.find("name", "Owner") || message.author.id == '237391552698122242') {
+  if (message.member.roles.find("name", "Admin") || message.member.roles.find("name", "Mod") || message.member.roles.find("name", "Owner") || message.member.roles.find("name", "The Military") || message.member.roles.find("name", "Bandits")) {
     return true;
   }
   else {
@@ -137,12 +137,13 @@ client.on("message", async message => {
 
   if (command === "rep" || command === "-rep" || command === "+rep") {
     let obj = JSON.parse(fs.readFileSync(message.guild.id+".reputation.json"))
+    let timeLeft = null
     if (!obj.hasOwnProperty(message.author.id)) {
       getData(message.author.id, message)
-      let timeLeft = 0
+      timeLeft = 0
     } else {
-      let timeLeft = getData(message.author.id, message).LastRep - timeMin()
-      timeLeft = 30 - timeLeft * -1
+      timeLeft = timeMin() - getData(message.author.id, message).LastRep
+      timeLeft = 30 - timeLeft
     }
     console.log("Time Left: " + timeLeft + " mins of " + message.author.username)
 
@@ -170,9 +171,10 @@ client.on("message", async message => {
     }
 
     if (timeLeft > 0) {
-      message.reply("You have to wait " + timeLeft + " minutes to rep someone again")
-      return;
+      return message.reply("You have to wait " + timeLeft + " minutes to rep someone again")
     }
+    console.log(getData(message.author.id, message).LastRep + " | " + timeMin())
+    setData(message.author.id, "LastRep", timeMin(), message)
 
     if (args.slice(0).join(' ') == "") {
       message.reply("You need to include someones username in the format @User#1234")
