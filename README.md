@@ -5,12 +5,13 @@ A Basic Bot for Tarkov Discords that has many features but not limited to being 
 
 # Required Roles
 
-1. Needed to use staff commands
+1. __Needed to use staff commands__
   - Owner
   - Admin
   - Mod
-
-2. Recommended but Not Needed for other commands
+1. __Needed to use shop commands__
+  - trusted_trader
+3. __Recommended but Not Needed for other commands__
   - BEAR
   - USEC
   - Member
