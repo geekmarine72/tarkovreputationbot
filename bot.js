@@ -174,7 +174,7 @@ client.on("message", async message => {
       return message.reply("You have to wait " + timeLeft + " minutes to rep someone again")
     }
     console.log(getData(message.author.id, message).LastRep + " | " + timeMin())
-    setData(message.author.id, "LastRep", timeMin(), message)
+
 
     if (args.slice(0).join(' ') == "") {
       message.reply("You need to include someones username in the format @User#1234")
@@ -204,7 +204,7 @@ client.on("message", async message => {
       message.channel.send('**:up:  |  ' + message.author.username + ' has given <@'+ arg +'> a reputation point!**');
       client.channels.find('name','rep-bot-log').send('** ' + message.author + ' has given <@'+ arg +'> a reputation point!**');
     }
-    setData(arg, "LastRep", timeMin(), message)
+    setData(message.author.id, "LastRep", timeMin(), message)
     return;
   } // END OF REPUTATION COMMAND
 
@@ -589,6 +589,51 @@ client.on("message", async message => {
       return message.channel.send("" + message.author + " has stopped the raffle, therefore no winner will be selected")
     }
     else {
+      return message.reply("You don't have the correct role to use that command")
+    }
+  }
+
+  if (command === "userinfo") {
+    if (isStaff(message)) {
+      if (arg = message.mentions.users.first() == undefined) {
+        return message.reply("Please provide the name of an actual user")
+      }
+      let user = message.mentions.users.first()
+      let embed = {
+        "color": 3447003,
+        "fields": [
+          {
+            "name": "ID",
+            "value": ":" + user.id
+          },
+          {
+            "name": "Username",
+            "value": ":" + user.username
+          },
+          {
+            "name": "Discriminator",
+            "value": ":" + user.discriminator
+          },
+          {
+            "name": "Avatar",
+            "value": ":" + user.avatar
+          },
+          {
+            "name": "Verified",
+            "value": ":" + user.verfified
+          },
+          {
+            "name": "Email",
+            "value": ":" + user.email
+          }
+        ]
+      }
+      message.author.send({ embed })
+      message.delete()
+        .then(msg => console.log(`Updated the content of a message from ${msg.author}`))
+      .catch(console.error);
+      return
+    } else {
       return message.reply("You don't have the correct role to use that command")
     }
   }
