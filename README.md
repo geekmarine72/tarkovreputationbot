@@ -5,6 +5,9 @@ A Basic Bot for Tarkov Discords that has many features but not limited to being 
 
 # Installation
 Project requires node and npm <br />
+[Node Download Page](https://nodejs.org/en/download/)  Direct: [WINDOWS](https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi) [MAC](https://nodejs.org/dist/v8.9.4/node-v8.9.4.pkg) <br/>
+```node -v``` Checks Node Version, ```npm -v``` Checks npm version <br/>
+```npm install npm@latest -g``` Update Npm (If you just installed node this isn't necessary)
 Step 1: Update config.json for your token and prefix <br />
 Step 2: cd into file directory <br />
 Step 3: ```npm install``` <br />
