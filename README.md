@@ -8,10 +8,11 @@ Project requires node and npm <br />
 [Node Download Page](https://nodejs.org/en/download/)  Direct: [WINDOWS](https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi) [MAC](https://nodejs.org/dist/v8.9.4/node-v8.9.4.pkg) <br/>
 ```node -v``` Checks Node Version, ```npm -v``` Checks npm version <br/>
 ```npm install npm@latest -g``` Update Npm (If you just installed node this isn't necessary) <br/> <br/>
-Step 1: Update config.json for your token and prefix <br />
-Step 2: cd into file directory <br />
-Step 3: ```npm install``` <br />
-Step 4: ```node bot``` <br />
+Step 1: Clone or Download Bot, unzip if you download it
+Step 2: Update config.json for your token and prefix <br />
+Step 3: cd into file directory <br />
+Step 4: ```npm install``` <br />
+Step 5: ```node bot``` <br />
 
 # Required Roles
 
