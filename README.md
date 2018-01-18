@@ -4,11 +4,11 @@ A Basic Bot for Tarkov Discords that has many features but not limited to being 
 ***REMEMBER TO CHANGE THE PREFIX AND TOKEN IN THE CONFIG.JSON FILE***
 
 # Installation
-Project requires node and npm
-Step 1: Update config.json for your token and prefix
-Step 2: cd into file directory
-Step 3: ```npm install```
-Step 4: ```node bot```
+Project requires node and npm <br />
+Step 1: Update config.json for your token and prefix <br />
+Step 2: cd into file directory <br />
+Step 3: ```npm install``` <br />
+Step 4: ```node bot``` <br />
 
 # Required Roles
 
