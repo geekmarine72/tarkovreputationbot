@@ -1,0 +1,3 @@
+If you read through the actual bot.js file you'll see that there are some extra roles
+added to the IsStaff() function, which checks if the user is an admin, you can remove them if you want
+or change them whatever, try not to break the bot
